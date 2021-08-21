@@ -1,6 +1,6 @@
 node {
     stage("checkout"){
-        git branch: 'main', url: 'https://github.com/IainLR/spring-hello-world.git'
+        git branch: 'main', url: '${gitRepo}'
     }
     stage("build"){
         sh 'mvn clean package'
