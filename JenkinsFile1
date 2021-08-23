@@ -1,7 +1,4 @@
 node {
-    tools{
-        maven '3.8.2'
-    }
     stage("checkout"){
         git branch: 'main', url: '${gitRepo}'
     }
