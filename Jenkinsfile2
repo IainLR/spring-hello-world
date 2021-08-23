@@ -4,14 +4,20 @@ pipeline{
     maven '3.8.2'
   }
   stages{
-    step("checkout"){
-          git branch: 'main', url: '${gitRepo}'
+    stage("checkout"){
+          steps{
+            git branch: 'main', url: '${gitRepo}'
+          }
     }
-    step("build"){
-        sh 'mvn clean package'
+    stage("build"){
+        steps{
+            sh 'mvn clean package'
+        }
     }
-    step("archive"){
-        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+    stage("archive"){
+        steps{
+            archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+        }
     }
   }
 }
