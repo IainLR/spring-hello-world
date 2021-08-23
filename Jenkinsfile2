@@ -3,14 +3,14 @@ pipeline{
   tools{ 
     maven '3.8.2'
   }
-  stages{
-    stage("checkout"){
-        git branch: 'main', url: '${gitRepo}'
+  steps{
+    step("checkout"){
+          git branch: 'main', url: '${gitRepo}'
     }
-    stage("build"){
+    step("build"){
         sh 'mvn clean package'
     }
-    stage("archive"){
+    step("archive"){
         archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
     }
   }
