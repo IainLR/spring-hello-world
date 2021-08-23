@@ -1,0 +1,17 @@
+pipeline{
+  agent{ label 'linux' }
+  tools{ 
+    maven '3.8.2'
+  }
+  stages{
+    stage("checkout"){
+        git branch: 'main', url: '${gitRepo}'
+    }
+    stage("build"){
+        sh 'mvn clean package'
+    }
+    stage("archive"){
+        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+    }
+  }
+}
