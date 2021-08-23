@@ -16,7 +16,7 @@ pipeline{
     }
     stage("archive"){
         steps{
-            archiveArtifacts artifacts: '*.jar', followSymlinks: false
+            archiveArtifacts artifacts: '.mvn/wrapper/*.jar', followSymlinks: false
         }
     }
   }
