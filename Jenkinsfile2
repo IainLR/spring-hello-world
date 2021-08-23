@@ -1,4 +1,5 @@
 pipeline{
+  agent{ agent 'linux' }
   tools{ 
     maven '3.8.2'
   }
